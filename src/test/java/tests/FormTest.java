@@ -30,17 +30,15 @@ public class FormTest {
         $(byText("Male")).click();
         $("#userNumber").setValue("21212121");
         $("#dateOfBirthInput").click();
-
         $(".react-datepicker__month-select").selectOptionByValue("2");
         $(".react-datepicker__year-select").selectOptionByValue("1934");
         $(".react-datepicker__day--009").click();
-
         $("#subjectsInput").setValue("Space travel").pressEnter();
         $(byText("Music")).click();
-
-
+        $("#uploadPicture").uploadFromClasspath("familyguy (2).png");
         $("#currentAddress").setValue("Address and street 1");
-
+        $("react-select-3-input").selectOptionByValue("Rajastan");
+        $("react-select-4-input").selectOptionByValue("Jaipur");
         $("#submit").click();
 
         $("#output").shouldHave(text("Gagarin"), text("gagarin@comp.ru"),

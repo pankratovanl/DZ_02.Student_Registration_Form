@@ -23,26 +23,39 @@ public class FormTest {
     void FillFormTest() {
 
         open("/automation-practice-form");
+
+        //заполнение формы
         $(".main-header").shouldHave(text("Practice Form"));
         $("#firstName").setValue("Yuriy");
         $("#lastName").setValue("Gagarin");
         $("#userEmail").setValue("gagarin@comp.ru");
         $(byText("Male")).click();
-        $("#userNumber").setValue("21212121");
+        $("#userNumber").setValue("2121212121");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOptionByValue("2");
         $(".react-datepicker__year-select").selectOptionByValue("1934");
         $(".react-datepicker__day--009").click();
-        $("#subjectsInput").setValue("Space travel").pressEnter();
+        $("#subjectsInput").setValue("Arts").pressEnter();
         $(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("familyguy (2).png");
         $("#currentAddress").setValue("Address and street 1");
-        $("react-select-3-input").selectOptionByValue("Rajastan");
-        $("react-select-4-input").selectOptionByValue("Jaipur");
+        $("#react-select-3-input").setValue("NCR").pressEnter();
+        $("#react-select-4-input").setValue("Delhi").pressEnter();
         $("#submit").click();
 
-        $("#output").shouldHave(text("Gagarin"), text("gagarin@comp.ru"),
-                text("Address and street 1"), text("Address and building 2"));
+        //проверка заполненной формы на валидность
+        $(".table-responsive").shouldHave(
+                text("Yuriy Gagarin"),
+                text("gagarin@comp.ru"),
+                text("Male"),
+                text("2121212121"),
+                text("09 March,1934"),
+                text("Arts"),
+                text("Music"),
+                text("familyguy (2).png"),
+                text("Address and street 1"),
+                text("NCR Delhi")
+        );
 
     }
 }

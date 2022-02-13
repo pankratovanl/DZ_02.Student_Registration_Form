@@ -37,7 +37,7 @@ public class FormTest {
         $(".react-datepicker__day--009").click();
         $("#subjectsInput").setValue("Arts").pressEnter();
         $(byText("Music")).click();
-        $("#uploadPicture").uploadFromClasspath("familyguy (2).png");
+        $("#uploadPicture").uploadFromClasspath("img/familyguy (2).png");
         $("#currentAddress").setValue("Address and street 1");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Delhi").pressEnter();
@@ -52,7 +52,7 @@ public class FormTest {
                 text("09 March,1934"),
                 text("Arts"),
                 text("Music"),
-                text("familyguy (2).png"),
+                text("img/familyguy (2).png"),
                 text("Address and street 1"),
                 text("NCR Delhi")
         );

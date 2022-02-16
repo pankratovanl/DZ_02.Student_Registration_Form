@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 
-public class FormTest {
+public class RegistrationFormTests {
 
     @BeforeAll
     static void beforeAll() {
@@ -52,7 +52,7 @@ public class FormTest {
                 text("09 March,1934"),
                 text("Arts"),
                 text("Music"),
-                text("img/familyguy (2).png"),
+                text("familyguy (2).png"),
                 text("Address and street 1"),
                 text("NCR Delhi")
         );

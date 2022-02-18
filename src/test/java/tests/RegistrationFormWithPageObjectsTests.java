@@ -13,6 +13,9 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationFormWithPageObjectsTests {
 
+    RegistrationPage registrationPage = new RegistrationPage();
+    String firstName = "Yuriy";
+
     @BeforeAll
     static void beforeAll() {
 
@@ -23,13 +26,9 @@ public class RegistrationFormWithPageObjectsTests {
     @Test
     void FillFormTest() {
 
-        open("/automation-practice-form");
-
-        //заполнение формы
-        $(".main-header").shouldHave(text("Practice Form"));
-
-        new RegistrationPage().setFirstName("Yuriy");
-        new RegistrationPage().setLastName("Gagarin");
+        registrationPage.openPage()
+        .setFirstName(firstName)
+        .setLastName("Gagarin");
         $("#userEmail").setValue("gagarin@comp.ru");
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("2121212121");
@@ -49,10 +48,10 @@ public class RegistrationFormWithPageObjectsTests {
 
         //проверка заполненной формы на валидность
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        new RegistrationPage().checkForm("Student Name","Yuriy Gagarin");
-        new RegistrationPage().checkForm("Student Email","gagarin@comp.ru");
-        new RegistrationPage().checkForm("Gender","Male");
-        new RegistrationPage().checkForm("Mobile","2121212121");
+        registrationPage.checkForm("Student Name",firstName + " Gagarin")
+            .checkForm("Student Email","gagarin@comp.ru")
+            .checkForm("Gender","Male")
+            .checkForm("Mobile","2121212121");
 
         $(".table-responsive").$(byText("Date of Birth"))
                 .parent().shouldHave(text("09 March,1934"));

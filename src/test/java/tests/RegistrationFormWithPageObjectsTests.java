@@ -23,6 +23,7 @@ public class RegistrationFormWithPageObjectsTests {
     String subjects = "Arts";
     String hobbies = "Music";
     String picture = "img/familyguy (2).png";
+    String pictureName = "familyguy (2).png";
     String currentAddress = "Address and street 1";
     String state = "NCR";
     String city = "Noida";
@@ -54,26 +55,19 @@ public class RegistrationFormWithPageObjectsTests {
                 .submitForm();
 
 
-               //проверка заполненной формы на валидность
+        //проверка заполненной формы на валидность
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         registrationPage
-                .checkForm("Student Name", firstName + " Gagarin")
-                .checkForm("Student Email", "gagarin@comp.ru")
-                .checkForm("Gender", "Male")
-                .checkForm("Mobile", "2121212121");
-
-        $(".table-responsive").$(byText("Date of Birth"))
-                .parent().shouldHave(text("09 March,1934"));
-        $(".table-responsive").$(byText("Subjects"))
-                .parent().shouldHave(text("Arts"));
-        $(".table-responsive").$(byText("Hobbies"))
-                .parent().shouldHave(text("Music"));
-        $(".table-responsive").$(byText("Picture"))
-                .parent().shouldHave(text("familyguy (2).png"));
-        $(".table-responsive").$(byText("Address"))
-                .parent().shouldHave(text("Address and street 1"));
-        $(".table-responsive").$(byText("State and City"))
-                .parent().shouldHave(text("NCR Noida"));
+                .checkForm("Student Name", firstName + " " + lastName)
+                .checkForm("Student Email", userEmail)
+                .checkForm("Gender", gender)
+                .checkForm("Mobile", userNumber)
+                .checkForm("Date of Birth", day + " " + month + "," + year)
+                .checkForm("Subjects", subjects)
+                .checkForm("Hobbies", hobbies)
+                .checkForm("Picture", pictureName)
+                .checkForm("Address", currentAddress)
+                .checkForm("State and City", state + " " + city);
 
     }
 }

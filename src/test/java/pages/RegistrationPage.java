@@ -112,7 +112,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setState(String state) {
-        $(stateInput).scrollTo().click();
+        stateInput.scrollTo().click();
         $(byText(state)).click();
 
         return this;
@@ -120,7 +120,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setCity(String city) {
-        $(cityInput).scrollTo().click();
+        cityInput.scrollTo().click();
         $(byText(city)).click();
 
         return this;

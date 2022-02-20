@@ -11,8 +11,23 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationFormWithPageObjectsTests {
 
-    public RegistrationPage registrationPage = new RegistrationPage();
+    RegistrationPage registrationPage = new RegistrationPage();
     String firstName = "Yuriy";
+    String lastName = "Gagarin";
+    String userEmail = "gagarin@comp.ru";
+    String gender = "Male";
+    String userNumber = "2121212121";
+    String day = "9";
+    String month = "March";
+    String year = "1934";
+    //String birthDate = day + " " + month + "," + year;
+    String subjects = "Arts";
+    String hobbies = "Music";
+    String picture = "img/familyguy (2).png";
+    String currentAddress = "Address and street 1";
+    String state = "NCR";
+    String city = "Noida";
+
 
     @BeforeAll
     static void beforeAll() {
@@ -25,30 +40,28 @@ public class RegistrationFormWithPageObjectsTests {
     void FillFormTest() {
 
         registrationPage.openPage()
-        .setFirstName(firstName)
-        .setLastName("Gagarin");
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserEmail(userEmail)
+                .setGender(gender)
+                .setUserNumber(userNumber)
+                .setBirthDate(day, month, year)
+                .setSubjects(subjects)
+                .setHobbies(hobbies)
+                .setPicture(picture)
+                .setCurrentAddress(currentAddress)
+                .setState(state)
+                .setCity(city)
+                .submitForm();
 
-        $("#userEmail").setValue("gagarin@comp.ru");
-        $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("2121212121");
-        registrationPage.setBirthDate("9", "2", "1934");
-        $("#subjectsInput").setValue("Arts").pressEnter();
-        $("#hobbiesWrapper").$(byText("Music")).click();
-        $("#uploadPicture").uploadFromClasspath("img/familyguy (2).png");
-        $("#currentAddress").setValue("Address and street 1");
-        $("#state").scrollTo().click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").scrollTo().click();
-        $("#stateCity-wrapper").$(byText("Noida")).click();
-        $("#submit").click();
 
-        //проверка заполненной формы на валидность
+               //проверка заполненной формы на валидность
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         registrationPage
-                .checkForm("Student Name",firstName + " Gagarin")
-                .checkForm("Student Email","gagarin@comp.ru")
-                .checkForm("Gender","Male")
-                .checkForm("Mobile","2121212121");
+                .checkForm("Student Name", firstName + " Gagarin")
+                .checkForm("Student Email", "gagarin@comp.ru")
+                .checkForm("Gender", "Male")
+                .checkForm("Mobile", "2121212121");
 
         $(".table-responsive").$(byText("Date of Birth"))
                 .parent().shouldHave(text("09 March,1934"));

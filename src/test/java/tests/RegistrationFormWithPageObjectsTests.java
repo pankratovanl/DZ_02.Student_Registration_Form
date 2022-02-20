@@ -8,12 +8,10 @@ import pages.RegistrationPage;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-
 
 public class RegistrationFormWithPageObjectsTests {
 
-    RegistrationPage registrationPage = new RegistrationPage();
+    public RegistrationPage registrationPage = new RegistrationPage();
     String firstName = "Yuriy";
 
     @BeforeAll
@@ -29,13 +27,11 @@ public class RegistrationFormWithPageObjectsTests {
         registrationPage.openPage()
         .setFirstName(firstName)
         .setLastName("Gagarin");
+
         $("#userEmail").setValue("gagarin@comp.ru");
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("2121212121");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOptionByValue("2");
-        $(".react-datepicker__year-select").selectOptionByValue("1934");
-        $(".react-datepicker__day--009").click();
+        registrationPage.setBirthDate("9", "2", "1934");
         $("#subjectsInput").setValue("Arts").pressEnter();
         $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("img/familyguy (2).png");
@@ -48,10 +44,11 @@ public class RegistrationFormWithPageObjectsTests {
 
         //проверка заполненной формы на валидность
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        registrationPage.checkForm("Student Name",firstName + " Gagarin")
-            .checkForm("Student Email","gagarin@comp.ru")
-            .checkForm("Gender","Male")
-            .checkForm("Mobile","2121212121");
+        registrationPage
+                .checkForm("Student Name",firstName + " Gagarin")
+                .checkForm("Student Email","gagarin@comp.ru")
+                .checkForm("Gender","Male")
+                .checkForm("Mobile","2121212121");
 
         $(".table-responsive").$(byText("Date of Birth"))
                 .parent().shouldHave(text("09 March,1934"));

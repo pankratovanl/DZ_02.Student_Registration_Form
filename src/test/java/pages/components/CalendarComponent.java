@@ -2,6 +2,7 @@ package pages.components;
 
 import com.codeborne.selenide.Condition;
 
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CalendarComponent {
@@ -10,7 +11,7 @@ public class CalendarComponent {
         $(".react-datepicker-popper").should(Condition.appear);
         $(".react-datepicker__month-select").selectOption(month);
         $(".react-datepicker__year-select").selectOption(year);
-        $(".react-datepicker__day--0" + day + "").click();
+        $(byText(day)).click();
 
     }
 

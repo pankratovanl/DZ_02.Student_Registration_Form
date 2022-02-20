@@ -17,10 +17,9 @@ public class RegistrationFormWithPageObjectsTests {
     String userEmail = "gagarin@comp.ru";
     String gender = "Male";
     String userNumber = "2121212121";
-    String day = "9";
-    String month = "March";
     String year = "1934";
-    //String birthDate = day + " " + month + "," + year;
+    String month = "March";
+    String day = "9";
     String subjects = "Arts";
     String hobbies = "Music";
     String picture = "img/familyguy (2).png";

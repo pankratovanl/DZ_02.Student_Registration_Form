@@ -28,8 +28,8 @@ public class RegistrationPage {
             hobbiesInput = $("#hobbiesWrapper"),
             pictureInput = $("#uploadPicture"),
             currentAddressInput = $("#currentAddress"),
-            stateInput = $("#stateCity-wrapper"),
-            cityInput = $("#stateCity-wrapper"),
+            stateInput = $("#state"),
+            cityInput = $("#city"),
             submitForm = $("#submit"),
 
     resultsTable = $(".table-responsive");
@@ -77,7 +77,7 @@ public class RegistrationPage {
 
 
     public RegistrationPage setBirthDate(String day, String month, String year) {
-        birthDateInput.click();
+        $(birthDateInput).click();
         calendarComponent.setDate(day, month, year);
 
         return this;
@@ -91,7 +91,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setHobbies(String hobbies) {
-        hobbiesInput.setValue(hobbies);
+        $(byText(hobbies)).click();
 
         return this;
 

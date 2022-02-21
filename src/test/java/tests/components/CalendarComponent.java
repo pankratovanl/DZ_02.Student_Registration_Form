@@ -1,4 +1,4 @@
-package pages.components;
+package tests.components;
 
 import com.codeborne.selenide.Condition;
 

@@ -31,6 +31,7 @@ public class RegistrationPage {
             stateInput = $("#state"),
             cityInput = $("#city"),
             submitForm = $("#submit"),
+            modalWindow = $("#example-modal-sizes-title-lg"),
 
     resultsTable = $(".table-responsive");
 

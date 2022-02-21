@@ -56,7 +56,7 @@ public class RegistrationFormWithPageObjectsTests {
 
 
         //проверка заполненной формы на валидность
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+
         registrationPage
                 .checkForm("Student Name", firstName + " " + lastName)
                 .checkForm("Student Email", userEmail)

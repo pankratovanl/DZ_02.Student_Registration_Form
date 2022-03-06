@@ -1,13 +1,15 @@
 package tests;
 
+import static utils.RandomUtils.*;
+
 public class TestData {
     public static String
             pageName = "Practice Form",
-            firstName = "Yuriy",
-            lastName = "Gagarin",
-            email = "gagarin@comp.ru",
+            firstName = getRandomString(10),
+            lastName = getRandomString(10),
+            email = getRandomEmail(),
             sex = "Male",
-            phone = "2121212121",
+            phone = getRandomPhone("+7"),
             subject = "Arts",
             hobbies = "Music",
             fileNameLocation = "img/familyguy (2).png",

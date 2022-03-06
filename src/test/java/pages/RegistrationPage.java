@@ -1,7 +1,7 @@
-package tests.pages;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import tests.components.CalendarComponent;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -29,7 +29,6 @@ public class RegistrationPage {
             stateInput = $("#state"),
             cityInput = $("#city"),
             submitForm = $("#submit"),
-            modalWindow = $("#example-modal-sizes-title-lg"),
 
     resultsTable = $(".table-responsive");
 
